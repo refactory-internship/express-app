@@ -2,8 +2,12 @@ const { Todo } = require('../db/models');
 
 class TodoController {
     static async get(req, res) {
-        const data = await Todo.findAll();
-        res.json(data);
+        const data = await Todo.findAll({
+            order: [
+                ['id', 'ASC']
+            ]
+        });
+        res.render('pages/index.ejs', { data: data });
     }
 
     static async getById(req, res) {
@@ -12,22 +16,26 @@ class TodoController {
     }
 
     static async create(req, res) {
-        const data = await Todo.create(req.body);
-        res.json(data);
+        res.render('pages/create.ejs');
+    }
+
+    static async store(req, res) {
+        await Todo.create(req.body);
+        res.redirect('/todos');
+    }
+
+    static async edit(req, res) {
+        const data = await Todo.findByPk(req.params['id']);
+        res.render('pages/edit.ejs', { data: data });
     }
 
     static async update(req, res) {
-        const data = await Todo.update(req.body, {
+        await Todo.update(req.body, {
             where: {
                 id: req.params['id']
             }
         });
-        console.log(data);
-        if (data) {
-            const get = await Todo.findByPk(req.params['id']);
-            res.json(get);
-        }
-        return res.json('Failed Insertion!');
+        res.redirect('/todos');
     }
 
     static async delete(req, res) {
@@ -36,12 +44,17 @@ class TodoController {
                 id: req.params['id']
             }
         });
-        if (data) {
-            return res.json('Data Successfully Deleted');
-        } else {
-            return res.json('Data Not Found');
-        }
+        // 
+        res.redirect('/todos');
+    }
 
+    static async getStatus(req, res) {
+        const data = await Todo.findAll({
+            where: {
+                status: req.params['status']
+            }
+        });
+        res.json(data);
     }
 }
 

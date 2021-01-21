@@ -3,7 +3,7 @@ const faker = require("faker");
 
 const todos = () => {
   const data = [];
-  for (let index = 0; index < 50; index++) {
+  for (let index = 0; index < 20; index++) {
     data.push(
       {
         title: faker.lorem.word(),
