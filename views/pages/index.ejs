@@ -13,7 +13,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="btn btn-outline-primary" href="/todos/create">Add new task</a>
+                            <a class="btn btn-outline-primary" href="/todo/create">Add new task</a>
                         </li>
                     </ul>
 
@@ -47,12 +47,12 @@
                                 <%= data[index].status %>
                             </td>
                             <td class="text-center">
-                                <a href="/todos/edit/<%= data[index].id %>" class="btn btn-primary">
+                                <a href="/todo/edit/<%= data[index].id %>" class="btn btn-primary">
                                     Edit
                                 </a>
                             </td>
                             <td class="text-center">
-                                <a href="/todos/delete/<%= data[index].id %>" class="btn btn-danger">
+                                <a href="/todo/delete/<%= data[index].id %>" class="btn btn-danger">
                                     Delete
                                 </a>
                             </td>

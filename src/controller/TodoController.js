@@ -21,7 +21,7 @@ class TodoController {
 
     static async store(req, res) {
         await Todo.create(req.body);
-        res.redirect('/todos');
+        res.redirect('/todo');
     }
 
     static async edit(req, res) {
@@ -35,7 +35,7 @@ class TodoController {
                 id: req.params['id']
             }
         });
-        res.redirect('/todos');
+        res.redirect('/todo');
     }
 
     static async delete(req, res) {
@@ -45,7 +45,7 @@ class TodoController {
             }
         });
         // 
-        res.redirect('/todos');
+        res.redirect('/todo');
     }
 
     static async getStatus(req, res) {

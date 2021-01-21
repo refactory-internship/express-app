@@ -11,14 +11,14 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
-app.get("/todos", todoController.get);
-app.get("/todos/create", todoController.create);
-app.get("/todos/edit/:id", todoController.edit);
-app.get("/todos/status/:status", todoController.getStatus);
-app.get("/todos/:id", todoController.getById);
-app.post("/todos", todoController.store);
-app.post("/todos/update/:id", todoController.update);
-app.get("/todos/delete/:id", todoController.delete);
+app.get("/todo", todoController.get);
+app.get("/todo/create", todoController.create);
+app.get("/todo/edit/:id", todoController.edit);
+app.get("/todo/status/:status", todoController.getStatus);
+app.get("/todo/:id", todoController.getById);
+app.post("/todo", todoController.store);
+app.post("/todo/update/:id", todoController.update);
+app.get("/todo/delete/:id", todoController.delete);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
